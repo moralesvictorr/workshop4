@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Statistics from "./pages/Statistics";
-import Navbar from "./layout";
+import Navbar from "./layout/Navbar";
 import QuestionCSS from './components/QuestionCSS';
 import QuestionFIGMA from './components/QuestionFIGMA';
 import QuestionHTML from './components/QuestionHTML';
