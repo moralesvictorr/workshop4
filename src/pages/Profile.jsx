@@ -1,6 +1,7 @@
 import React from 'react'
 import CompLogout from '../components/CompLogout'
 import CompProfile from '../components/CompProfile'
+import Navbar from '../layout/Navbar'
 
 const Profile = () => {
   return (
@@ -10,6 +11,7 @@ const Profile = () => {
       <CompProfile /> 
       <CompLogout />
      
+      <Navbar/>
     </div>
   )
 }
