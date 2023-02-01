@@ -2,7 +2,7 @@ import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 
 const CompProfile = () => {
-    const {user, isAuthenticated, isLoading} = useAuth0()
+    const {user, isAuthenticated, isLoading, logout} = useAuth0()
   if (isLoading) {
     return <div>Loading...</div>
   }
@@ -12,6 +12,7 @@ const CompProfile = () => {
             <img src={user.picture} alt={user.name} />
             <h2>{user.name}</h2>
             <p>Email: {user.email}</p>
+            return <button onClick={() => logout({returnTo:window.location.origin})}>Logout</button>
         </div>
     )
     )

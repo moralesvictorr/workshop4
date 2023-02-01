@@ -8,7 +8,7 @@ import CompLogout from './components/CompLogout';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
-    <Auth0Provider domain= 'dev-tm2yt3jokd424kus.us.auth0.com' clientId= 'vdYv6TZwbz1YRgmJyMuFPlFyDqQIsmf3'  authorizationParams={{ redirect_uri:window.location.origin }}>
+    <Auth0Provider domain= 'dev-2j4te1loe40o0kzm.us.auth0.com' clientId= 'imzLcxxESkEOS0HhAd7goAAxUZxknatC'  authorizationParams={{ redirect_uri:window.location.origin }}>
       <App />
 
     </Auth0Provider>
