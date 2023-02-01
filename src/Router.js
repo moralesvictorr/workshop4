@@ -15,8 +15,7 @@ import QuestionUX from './components/QuestionUX';
 export const router = createBrowserRouter(
 	createRoutesFromElements(
 		<>
-			<Route path="/" element={<Navbar />} >
-
+				<Route path="/" element={<Navbar />} />
 				<Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/statistics" element={<Statistics />} />
@@ -27,7 +26,7 @@ export const router = createBrowserRouter(
                 <Route path="/questionFIGMA" element={<QuestionFIGMA />} />
                 <Route path="/questionUX" element={<QuestionUX />} />
 
-			</Route>
+			
 		</>
 	)
 )
