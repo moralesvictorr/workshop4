@@ -6,7 +6,7 @@ import CompProfile from '../components/CompProfile'
 function Login() {
   return (
     <>
-    <h1>Hola</h1>
+    <h1 className='text-blue p-4'>Hola</h1>
     <CompLogin />
     <CompProfile />
     <CompLogout />
