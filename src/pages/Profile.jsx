@@ -1,8 +1,11 @@
 import React from 'react'
+import Navbar from '../layout/Navbar'
 
 const Profile = () => {
   return (
-    <div>Profile</div>
+    <div>Profile
+      <Navbar/>
+    </div>
   )
 }
 
