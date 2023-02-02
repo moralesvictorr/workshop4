@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Statistics from "./pages/Statistics";
-import Navbar from "./layout/Navbar";
+import Navbar from "./layout/Navbar.jsx";
 import QuestionCSS from './components/QuestionCSS';
 import QuestionFIGMA from './components/QuestionFIGMA';
 import QuestionHTML from './components/QuestionHTML';
@@ -25,8 +25,8 @@ export const router = createBrowserRouter(
                 <Route path="/questionJS" element={<QuestionJS />} />
                 <Route path="/questionFIGMA" element={<QuestionFIGMA />} />
                 <Route path="/questionUX" element={<QuestionUX />} />
+                <Route path="*" element={<Profile />} />
 
-			
 		</>
 	)
 )
