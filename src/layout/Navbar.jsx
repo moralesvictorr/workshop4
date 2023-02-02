@@ -3,17 +3,32 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div>
-      Navbar
-      <Link to="/home" >
-        <img src="https://tse1.mm.bing.net/th?id=OIP.srwhrq0ikhWXYQyiAinsRQAAAA&pid=Api&P=0" alt="" />
-      </Link>
-      <Link to="/statistics" >
-        <img src="https://tse1.mm.bing.net/th?id=OIP.srwhrq0ikhWXYQyiAinsRQAAAA&pid=Api&P=0" alt="" />
-      </Link>
-      <Link to="/profile" >
-        <img src="https://tse1.mm.bing.net/th?id=OIP.srwhrq0ikhWXYQyiAinsRQAAAA&pid=Api&P=0" alt="" />
-      </Link>
+    <div className=" bg-slate-800 s ">
+      <div className=" bg-cyan-900 flex  space-x-96">
+        <Link to="/home" className="ml-40">
+          <img src="./icono-home.svg" width="40px" alt="icono-home" />
+          <span className="text-white text-sm font-anton hover:text-green-500">
+            HOME
+          </span>
+        </Link>
+
+        <Link to="/statistics">
+          <img
+            src="./icono-statistics.svg"
+            width="40px"
+            alt="icono-statistics"
+          />
+          <span className="text-white text-sm font-anton hover:text-green-500">
+            STATISTICS
+          </span>
+        </Link>
+        <Link to="/profile">
+          <img src="./icono-profile.svg" width="40px" alt="icono-profile" />
+          <span className="text-white text-sm font-anton hover:text-green-500">
+            PROFILE
+          </span>
+        </Link>
+      </div>
     </div>
   );
 };
