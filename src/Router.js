@@ -17,13 +17,14 @@ import Statistics from "./pages/Statistics";
 // import QuestionHTML from "./components/QuestionHTML";
 // import QuestionJS from "./components/QuestionJS";
 // import QuestionUX from "./components/QuestionUX";
-import Questionary from "./components/Questionary";
+import Questionary from "./pages/Questionary";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/home" element={<Home />} />
+      <Route path="/" element={<Login />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/home" element={<Home />} />
       <Route path="/statistics" element={<Statistics />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/HTML" element={<Questionary />} />

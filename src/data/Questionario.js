@@ -6,7 +6,7 @@ export const questionHTML = [
         b: "Hard Text Markup Language",
         c: "Hyper Text Markup Language",
         d: "Hard Text Mask Language",
-        corrrect: "Hyper Text Markup Language"
+        correct: "Hyper Text Markup Language"
     },
     {
         
@@ -15,7 +15,7 @@ export const questionHTML = [
         b: "<br/>",
         c: "<breakLine>",
         d: "<hr>",
-        corrrect: "</br>"
+        correct: "</br>"
     },
     {
         
@@ -24,7 +24,7 @@ export const questionHTML = [
         b: "<!–…–>",
         c: "ctrl + c",
         d: "<¡–…–>r",
-        corrrect: "<!–…–>"
+        correct: "<!–…–>"
     },
     {
         
@@ -33,7 +33,7 @@ export const questionHTML = [
         b: "<a href=» «>…</a>",
         c: "<a src=» «>…</a>",
         d: "<link href=» «>…<link>",
-        corrrect: "<a href=» «>…</a>"
+        correct: "<a href=» «>…</a>"
     },
     {
         
@@ -42,7 +42,7 @@ export const questionHTML = [
         b: "<ul>",
         c: "<li>",
         d: "<list>",
-        corrrect: "<ul>"
+        correct: "<ul>"
     },
     {
         
@@ -51,7 +51,7 @@ export const questionHTML = [
         b: "<script>",
         c: "<main>",
         d: "<header>",
-        corrrect: "<script>"
+        correct: "<script>"
     },
 ]
 
@@ -63,7 +63,7 @@ export const questionCSS = [
         b: "Code of Style Sheets",
         c: "Coded Style Sheets ",
         d: "Cascading Style Sheets",
-        corrrect: "Cascading Style Sheets"
+        correct: "Cascading Style Sheets"
     },
     {
         
@@ -72,7 +72,7 @@ export const questionCSS = [
         b: "/**/",
         c: "!!",
         d: "//node_modules",
-        corrrect: "/**/"
+        correct: "/**/"
     },
     {
         
@@ -81,7 +81,7 @@ export const questionCSS = [
         b: "right-margin",
         c: "marginright",
         d: "Ninguna de las anteriores",
-        corrrect: "margin-right"
+        correct: "margin-right"
     },
     {
         
@@ -90,7 +90,7 @@ export const questionCSS = [
         b: "Incrustado en la cabecera",
         c: "Hojas de estilo externas",
         d: "Mediante PHP",
-        corrrect: "Hojas de estilo externas"
+        correct: "Hojas de estilo externas"
     },
     {
         
@@ -99,7 +99,7 @@ export const questionCSS = [
         b: "italic",
         c: "background-color",
         d: "h1",
-        corrrect: "background-color"
+        correct: "background-color"
     },
 
     {
@@ -109,7 +109,7 @@ export const questionCSS = [
         b: "p {background-color:red;}",
         c: "#p {background-color:red;}",
         d: "r.p {background-color:red;}",
-        corrrect: "p {background-color:red;}"
+        correct: "p {background-color:red;}"
     }
    
 ]
@@ -122,7 +122,7 @@ export const questionJS = [
         b: "export { ClassName }",
         c: "export default ClassName",
         d: "export  ClassName ",
-        corrrect: "export default ClassName"
+        correct: "export default ClassName"
     },
     {
         
@@ -131,7 +131,7 @@ export const questionJS = [
         b: "...",
         c: "||",
         d: "//",
-        corrrect: "..."
+        correct: "..."
     },
     {
         
@@ -140,7 +140,7 @@ export const questionJS = [
         b: "Apple",
         c: "Netscape",
         d: "Novel",
-        corrrect: "Netscape"
+        correct: "Netscape"
     },
     {
         
@@ -149,7 +149,7 @@ export const questionJS = [
         b: "integer",
         c: "long",
         d: "number",
-        corrrect: "number"
+        correct: "number"
     },
     {
         
@@ -158,7 +158,7 @@ export const questionJS = [
         b: "Falso",
         c: "a veces",
         d: "masomenos",
-        corrrect: "Verdadero"
+        correct: "Verdadero"
     },
     
  
@@ -171,7 +171,7 @@ export const questionFigma = [
         b: "Es una herramienta online para diseñar interfaces que permite la colaboración en vivo.",
         c: "Es una herramienta de diseño",
         d: "Todas las anteriores",
-        corrrect: "Es una herramienta online para diseñar interfaces que permite la colaboración en vivo."
+        correct: "Es una herramienta online para diseñar interfaces que permite la colaboración en vivo."
     },
     {
         
@@ -180,7 +180,7 @@ export const questionFigma = [
         b: "2005",
         c: "1990",
         d: "2000",
-        corrrect: "2015"
+        correct: "2015"
     },
     {
         
@@ -189,7 +189,7 @@ export const questionFigma = [
         b: "Pantallas de sitios web, Aplicaciones para celulares.",
         c: "Base de datos",
         d: "Sitios web",
-        corrrect: "Pantallas de sitios web, Aplicaciones para celulares."
+        correct: "Pantallas de sitios web, Aplicaciones para celulares."
     },
     {
         
@@ -199,7 +199,7 @@ export const questionFigma = [
         c: "segun la region",
         d: "en ocaciones",
     
-        corrrect: "Verdadero"
+        correct: "Verdadero"
     },
     {
         
@@ -209,7 +209,7 @@ export const questionFigma = [
         c: "puedes desarrollar un sitio web",
         d: "Te permite sistematizar todos tus diseños y alojarlos en la nube",
     
-        corrrect: "puedes desarrollar un sitio web"
+        correct: "puedes desarrollar un sitio web"
     }
  
 ]
@@ -221,35 +221,35 @@ export const questionUX = [
         b: "Use Experience",
         c: "User Experience",
         d: "User Excommunicate",
-        corrrect: "User Experience"
+        correct: "User Experience"
     },{
         question: "¿Qué es la Experiencia del usuario?",
         a: "los trabajos que ha tenido el usuario",
         b: "tiempos dificiles en la empresa",
         c: "desarrollo de un producto y su relacion con quien lo creó",
         d: "consiste en la experiencia generada por las interacciones de un usuario con determinada solución o producto de una marca.",
-        corrrect: "consiste en la experiencia generada por las interacciones de un usuario con determinada solución o producto de una marca."
+        correct: "consiste en la experiencia generada por las interacciones de un usuario con determinada solución o producto de una marca."
     },{
         question: "¿Cual de éstas es una de las áreas de UX?",
         a: "UX developer",
         b: "UX sports",
         c: "UX trasnport",
         d: "User Excommunicate",
-        corrrect: "UX developer"
+        correct: "UX developer"
     },{
         question: "¿Qué es UX Writing?",
         a: "es una estrategia enfocada en el diseño de una app",
         b: "es una estrategia enfocada en el contenido (textos) de las soluciones que son entregadas a los usuarios. ",
         c: "User Experience",
         d: "es una estrategia enfocada en el desarrollo de juegos",
-        corrrect: "es una estrategia enfocada en el contenido (textos) de las soluciones que son entregadas a los usuarios. "
+        correct: "es una estrategia enfocada en el contenido (textos) de las soluciones que son entregadas a los usuarios. "
     },   {
         question: "¿Cuál es la diferencia entre UI y UX?",
         a: "Ambos, UI y UX, están relacionados y forman parte de la estrategia de diseño de un producto.",
         b: "UI es la abreviatura de User Interface, que se traduce como interfaz del usuario",
         c: "La principal diferencia entre ellos es que UI se enfoca en el layout o diseño en sí, mientras que UX se centra en la experiencia del usuario",
         d: "User Excommunicate",
-        corrrect: "La principal diferencia entre ellos es que UI se enfoca en el layout o diseño en sí, mientras que UX se centra en la experiencia del usuario al interactuar con la solución como un todo."
+        correct: "La principal diferencia entre ellos es que UI se enfoca en el layout o diseño en sí, mientras que UX se centra en la experiencia del usuario al interactuar con la solución como un todo."
     }
  
 ]
