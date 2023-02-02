@@ -1,20 +1,17 @@
-import React from 'react'
+import React,{useState} from 'react'
+import {useHistory} from 'react-router'
 import QuestionCSS from '../components/QuestionCSS'
 import QuestionJS from '../components/QuestionJS'
 import QuestionHTML from '../components/QuestionHTML'
 import QuestionFIGMA from '../components/QuestionFIGMA'
+import CategoryContext from './Home'
 
-function onClickCategory(category) {
-    return category
-}
-
-const Questions = (tipoDeQuestionario) => {
-
-    let selectedCategory = onClickCategory()
-
+const Quiz = () => {
   return (
-    <div>Questions</div>
+    <div>
+        <h1></h1>
+    </div>
   )
 }
 
-export default Questions
+export default Quiz

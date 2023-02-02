@@ -10,6 +10,7 @@ import QuestionFIGMA from './components/QuestionFIGMA';
 import QuestionHTML from './components/QuestionHTML';
 import QuestionJS from './components/QuestionJS';
 import QuestionUX from './components/QuestionUX';
+import Quiz from './pages/Quiz';
 
 
 export const router = createBrowserRouter(
@@ -25,6 +26,7 @@ export const router = createBrowserRouter(
                 <Route path="/questionJS" element={<QuestionJS />} />
                 <Route path="/questionFIGMA" element={<QuestionFIGMA />} />
                 <Route path="/questionUX" element={<QuestionUX />} />
+                <Route path="/quiz" element={<Quiz />} />
 
 			
 		</>
