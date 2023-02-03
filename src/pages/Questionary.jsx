@@ -15,10 +15,8 @@ const Questionary = () => {
   || element.toLocaleLowerCase() === "figma"
   || element.toLocaleLowerCase() === "ux"
   );
-  console.log("eleccion es: ", words);
-  console.log("category es: ", category);
   const navigate = useNavigate();
-  /* ----------------------------   */
+  /* ------------  Traemos los datos dependiendo de categoria ----------------   */
   let questions = [];
   switch (category) {
     case 'HTML':
@@ -37,27 +35,24 @@ const Questionary = () => {
       questions = questionJS;
       break;
       default:
-        alert('No se encontro la categoria')
-      
+        alert('No se encontro la categoria')  
   }
-  let contador = 0;
-  let pregunta = questions[contador].question;
-  let a = questions[contador].a;
-  let b = questions[contador].b;
-  let c = questions[contador].c;
-  let d = questions[contador].d;
-  let correct = questions[contador].correct;
 
+ /* ---------------------------------------- */ 
+  let contador = 0; // Contador de preguntas
+  let pregunta = questions[contador].question;  // Variable en la que iremos itereando las preguntas
+  let a = questions[contador].a;  // respuesta A
+  let b = questions[contador].b; // respuesta B
+  let c = questions[contador].c; // respuesta C
+  let d = questions[contador].d;  // respuesta D
+  let correct = questions[contador].correct;  // respuesta correcta
 
-  console.log(pregunta);
-  console.log("a", a);
-  console.log("b", b);
-  console.log("c", c);
-  console.log("d", d);
-  console.log("correct", correct);
-
+/* ------------  FUNCION QUE VALIDA SI LA RESPUESTA ENVIADA ES CORRECTA --------------------------- */  
   const validateOption = (respuesta) => {
-    if (respuesta === correct) {
+    console.log(respuesta);
+    console.log(questions[contador].respuesta)
+    if (questions[contador].respuesta  === correct) {
+     
       alert("Correcto");
       contador++;
       pregunta = questions[contador].question;
@@ -71,16 +66,14 @@ const Questionary = () => {
     }
   }
 
+  /* ------------------- FUNCION QUE VALIDA EL ENVIO DEL FORMULARIO  --------------- */
   function handleSubmit(evt) {
-    /*
-      Previene el comportamiento default de los
-      formularios el cual recarga el sitio
-    */
     evt.preventDefault();
-
-    // Aquí puedes usar values para enviar la información
+    console.log("Formulario enviado");
+    console.log(opcion);
+    validateOption(opcion);
   }
-
+ /* ---------------  USE STATE y METODO PARA SABER INPUT SELECCIONADO -------- */
   const [opcion, setOpcion] = React.useState('');
   const handleChange = (event) => {
     setOpcion(event.target.value)
@@ -90,19 +83,21 @@ const Questionary = () => {
       <form onSubmit={handleSubmit} >
       <h1>Questionary</h1>
       <h2>Estamos en la categoria: {category}</h2>
-      <label htmlFor="a">A. {pregunta}</label>
+
+      <label htmlFor="a">A. {a}</label>
       <input value='a' type="radio" id="a" name="pregunta" checked={opcion === 'a'} onChange={handleChange}/>
-      <label htmlFor="b">B. {pregunta}</label>
-      <input type="radio" id="b" name="pregunta"/>
+     
+      <label htmlFor="b">B. {b}</label>
+      <input value='b' type="radio" id="b" name="pregunta"checked={opcion === 'b'} onChange={handleChange}/>
 
-      <label htmlFor="c">C. {pregunta}</label>
-      <input type="radio" id="c" name="pregunta" />
+      <label htmlFor="c">C. {c}</label>
+      <input value='c' type="radio" id="c" name="pregunta" checked={opcion === 'c'} onChange={handleChange}/>
 
-      <button className="bg-gray-400" onClick={validateOption(opcion)} >Comprobar</button>
+      <button className="bg-gray-400"  >Comprobar</button>
 
       </form>
 
-
+      <h2>Selected radio: {opcion}</h2>
 
 
       <button className="bg-gray-500 text-white" onClick={() => navigate("/home")}>
