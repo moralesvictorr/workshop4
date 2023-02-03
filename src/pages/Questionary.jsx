@@ -38,7 +38,7 @@ const Questionary = () => {
         alert('No se encontro la categoria')  
   }
 
- /* ---------------------------------------- */ 
+ /* ------------------ Variables con useState para capturar la info a mostrar---------------------- */ 
  let [contador, setContador] = React.useState(0); // Contador de preguntas
  let [pregunta, setPregunta] = React.useState(questions[contador].question); // Variable en la que iremos itereando las preguntas
  let [a, setA] = React.useState(questions[contador].a); // respuesta A
@@ -49,13 +49,7 @@ const Questionary = () => {
 
 /* ------------  FUNCION QUE VALIDA SI LA RESPUESTA ENVIADA ES CORRECTA --------------------------- */  
   const validateOption = (respuesta) => {
-    if (respuesta  === correct) {
-     
-      alert("Correcto");
-
-    } else {
-      alert("Incorrecto");
-    }
+    respuesta === correct ? alert("Correcto") : alert("Incorrecto");
   }
 
   /* ------------------- FUNCION QUE VALIDA EL ENVIO DEL FORMULARIO  --------------- */
