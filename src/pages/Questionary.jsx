@@ -39,28 +39,20 @@ const Questionary = () => {
   }
 
  /* ---------------------------------------- */ 
-  let contador = 0; // Contador de preguntas
-  let pregunta = questions[contador].question;  // Variable en la que iremos itereando las preguntas
-  let a = questions[contador].a;  // respuesta A
-  let b = questions[contador].b; // respuesta B
-  let c = questions[contador].c; // respuesta C
-  let d = questions[contador].d;  // respuesta D
-  let correct = questions[contador].correct;  // respuesta correcta
+ let [contador, setContador] = React.useState(0); // Contador de preguntas
+ let [pregunta, setPregunta] = React.useState(questions[contador].question); // Variable en la que iremos itereando las preguntas
+ let [a, setA] = React.useState(questions[contador].a); // respuesta A
+ let [b, setB] = React.useState(questions[contador].b); // respuesta B
+ let [c, setC] = React.useState(questions[contador].c); // respuesta C
+ let [d, setD] = React.useState(questions[contador].d);  // respuesta D
+ let [correct, setCorrect] = React.useState(questions[contador].correct);  // respuesta correcta
 
 /* ------------  FUNCION QUE VALIDA SI LA RESPUESTA ENVIADA ES CORRECTA --------------------------- */  
   const validateOption = (respuesta) => {
-    console.log(respuesta);
-    console.log(questions[contador].respuesta)
-    if (questions[contador].respuesta  === correct) {
+    if (respuesta  === correct) {
      
       alert("Correcto");
-      contador++;
-      pregunta = questions[contador].question;
-      a = questions[contador].a;
-      b = questions[contador].b;
-      c = questions[contador].c;
-      d = questions[contador].d;
-      correct = questions[contador].correct;
+
     } else {
       alert("Incorrecto");
     }
@@ -68,15 +60,26 @@ const Questionary = () => {
 
   /* ------------------- FUNCION QUE VALIDA EL ENVIO DEL FORMULARIO  --------------- */
   function handleSubmit(evt) {
-    evt.preventDefault();
+    evt.preventDefault(); // Evita que se recargue la pagina
     console.log("Formulario enviado");
-    console.log(opcion);
-    validateOption(opcion);
+    console.log(selectedValue);
+    validateOption(selectedValue); // Validamos la opcion enviada
+    setSelectedValue("") // Limpiamos el input seleccionado
+    
+    setContador(contador + 1);
+    console.log(contador);
+    setPregunta(questions[contador].question);
+    console.log(questions[contador].question);
+    setA(questions[contador].a);
+    setB(questions[contador].b);
+    setC(questions[contador].c);
+    setD(questions[contador].d);
+    setCorrect(questions[contador].correct);
   }
  /* ---------------  USE STATE y METODO PARA SABER INPUT SELECCIONADO -------- */
-  const [opcion, setOpcion] = React.useState('');
+  const [selectedValue, setSelectedValue] = React.useState('');
   const handleChange = (event) => {
-    setOpcion(event.target.value)
+    setSelectedValue(event.target.value)
   }
   return (
     <div>
@@ -84,20 +87,24 @@ const Questionary = () => {
       <h1>Questionary</h1>
       <h2>Estamos en la categoria: {category}</h2>
 
+      <h2>{pregunta}</h2>
       <label htmlFor="a">A. {a}</label>
-      <input value='a' type="radio" id="a" name="pregunta" checked={opcion === 'a'} onChange={handleChange}/>
+      <input value='a' type="radio" id="a" name="pregunta" checked={selectedValue === 'a'} onChange={handleChange}/>
      
       <label htmlFor="b">B. {b}</label>
-      <input value='b' type="radio" id="b" name="pregunta"checked={opcion === 'b'} onChange={handleChange}/>
+      <input value='b' type="radio" id="b" name="pregunta"checked={selectedValue === 'b'} onChange={handleChange}/>
 
       <label htmlFor="c">C. {c}</label>
-      <input value='c' type="radio" id="c" name="pregunta" checked={opcion === 'c'} onChange={handleChange}/>
+      <input value='c' type="radio" id="c" name="pregunta" checked={selectedValue === 'c'} onChange={handleChange}/>
+
+      <label htmlFor="d">D. {d}</label>
+      <input value='d' type="radio" id="d" name="pregunta" checked={selectedValue === 'd'} onChange={handleChange}/>
 
       <button className="bg-gray-400"  >Comprobar</button>
 
       </form>
 
-      <h2>Selected radio: {opcion}</h2>
+      <h2>Selected radio: {selectedValue}</h2>
 
 
       <button className="bg-gray-500 text-white" onClick={() => navigate("/home")}>
