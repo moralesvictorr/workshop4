@@ -1,17 +1,25 @@
 import React from 'react'
 
 export const getFromLocalStorage = () => {
-    const lives = localStorage.getItem("lives") ? JSON.parse(localStorage.getItem("lives")) : localStorage.setItem("lives", JSON.stringify(4));
-    return JSON.parse(lives)
+  const lives = localStorage.getItem("lives") ? JSON.parse(localStorage.getItem("lives")) : localStorage.setItem("lives", JSON.stringify(4));
+  return JSON.parse(lives)
+};
+
+export const subtractLive = (dataLives,setDataLives) => {
+  if (dataLives > 0) {
+  const newLives = dataLives - 1;
+  localStorage.setItem("lives", JSON.stringify(newLives));
+  setDataLives(newLives);
+  }
   };
-  
-  export const Lives = () => {
-    const [dataLives, setDataLives] = React.useState(getFromLocalStorage());
-  
-    return (
-      <div>
-        <h2>Data from Local Storage: {JSON.stringify(dataLives)}</h2>
-      </div>
-    );
-  };
+
+export const Lives = () => {
+  const [dataLives, setDataLives] = React.useState(getFromLocalStorage());
+
+  return (
+    <div>
+      <h2>Data from Local Storage: {JSON.stringify(dataLives)}</h2>
+    </div>
+  );
+};
 
