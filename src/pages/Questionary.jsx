@@ -6,37 +6,24 @@ import {questionHTML,questionCSS,questionFigma,questionUX,questionJS} from "../d
 
 const Questionary = () => {
  /* ------------   IDENTIFICANDO CATEGORIA----------------   */
-  const nameUrl = window.location.href;
-  const words = nameUrl.split("/");
-  const category = words.find((element) => 
-  element.toLocaleLowerCase() === "js" 
-  || element.toLocaleLowerCase() === "html"
-  || element.toLocaleLowerCase() === "css"
-  || element.toLocaleLowerCase() === "figma"
-  || element.toLocaleLowerCase() === "ux"
-  );
+ const nameUrl = window.location.href;
+ const words = nameUrl.split("/");
+ const category = words.find(element =>
+   ["js", "html", "css", "figma", "ux"].includes(
+     element.toLocaleLowerCase()
+   )
+ );
   const navigate = useNavigate();
   /* ------------  Traemos los datos dependiendo de categoria ----------------   */
-  let questions = [];
-  switch (category) {
-    case 'HTML':
-      questions = questionHTML;
-      break;
-    case 'CSS':
-      questions = questionCSS;
-      break;
-    case 'FIGMA':
-      questions = questionFigma;
-      break;
-    case 'UX':
-      questions = questionUX;
-      break;
-    case 'JS':
-      questions = questionJS;
-      break;
-      default:
-        alert('No se encontro la categoria')  
-  }
+  const questionData = { // Objeto con las data correspondiente a cada categoria
+    HTML: questionHTML,
+    CSS: questionCSS,
+    FIGMA: questionFigma,
+    UX: questionUX,
+    JS: questionJS
+  };
+  
+  let questions = questionData[category] // Vector con las preguntas de la categoria seleccionada
 
  /* ------------------ Variables con useState para capturar la info a mostrar---------------------- */ 
  let [contador, setContador] = React.useState(0); // Contador de preguntas
@@ -56,14 +43,12 @@ const Questionary = () => {
   function handleSubmit(evt) {
     evt.preventDefault(); // Evita que se recargue la pagina
     console.log("Formulario enviado");
-    console.log(selectedValue);
     validateOption(selectedValue); // Validamos la opcion enviada
     setSelectedValue("") // Limpiamos el input seleccionado
     
+    /* ------ Hace uso de useState, exactamente de los metodos set para pasar a la siguiente pregunta----  */
     setContador(contador + 1);
-    console.log(contador);
     setPregunta(questions[contador].question);
-    console.log(questions[contador].question);
     setA(questions[contador].a);
     setB(questions[contador].b);
     setC(questions[contador].c);
