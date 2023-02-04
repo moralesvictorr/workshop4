@@ -5,7 +5,7 @@ import Navbar from "../layout/Navbar";
 
 const Home = () => {
   return (
-    <div className="bg-slate-800 ">
+    <div className="bg-slate-800 grid grid-col  content-end h-screen w-screen">
       <h1 className="text-white flex justify-center pt-5 font-anton text-xl ">
         Practica tus conocimientos en la categoria que prefieras.
       </h1>
@@ -60,7 +60,7 @@ const Home = () => {
         </div>
       </div>
       <div className="bg-slate-800 pt-7">
-        <Navbar />
+      <Navbar />
       </div>
     </div>
   );
