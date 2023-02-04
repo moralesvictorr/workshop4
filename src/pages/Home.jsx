@@ -1,68 +1,67 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../layout/Navbar";
-import Login from "./Login";
-import { useNavigate } from "react-router-dom";
+//import Login from "./Login";
 
 const Home = () => {
   const navigate = useNavigate();
   return (
-    <div className="bg-blue ">
-      <div className="bg-blue">
-        <Login />
-        <h1>Practica tus conocimientos en la categoría que prefieras.</h1>
-
-        <div>
-          <button onClick={() => navigate("/HTML") }>
+    <div className="bg-slate-800 grid grid-col  content-end h-screen w-screen">
+      <h1 className="text-white flex justify-center pt-5 font-anton text-xl ">
+        Practica tus conocimientos en la categoria que prefieras.
+      </h1>
+      <div className=" flex gap-7 flex-col">
+        <div className="flex justify-center pt-5">
+          <Link to="/questionHTML">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/800px-HTML5_logo_and_wordmark.svg.png"
-              width="70px"
-              alt=""
-            />
-          </button>
-          {/* <Link to="/questionary">
-      <img src="https://as2.ftcdn.net/v2/jpg/01/37/41/95/1000_F_137419573_AbQ3d7R3zkzByqAe0fRHgXw8brJQvOMv.jpg" width="70px" alt="" />
-    </Link> */}
-        </div>
-
-        <div>
-          <Link to="/CSS">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg"
-              width="70px"
+              className=" border-8 hover:border-green-500 border-white rounded-full  "
+              src="./icono-html.svg"
+              width="110px"
               alt=""
             />
           </Link>
         </div>
 
-        <div>
-          <Link to="/JS">
+        <div className=" flex justify-center space-x-7">
+          <Link to="/questionCSS">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg"
-              width="70px"
+              className="border-8  hover:border-green-500 border-white rounded-full "
+              src="./icono-css.svg"
+              width="110px"
+              alt=""
+            />
+          </Link>
+          <Link to="/questionJS">
+            <img
+              className="  border-8  hover:border-green-500 border-white rounded-full"
+              src="./icono-js.svg"
+              width="110px"
               alt=""
             />
           </Link>
         </div>
-        <div>
-          <Link to="/FIGMA">
+
+        <div className=" flex justify-center space-x-11">
+          <Link to="/questionFIGMA">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg"
-              width="70px"
+              className=" border-8  hover:border-green-500 border-white rounded-full "
+              src="./icono-figma.svg"
+              width="110px"
+              alt=""
+            />
+          </Link>
+          <Link to="/questionUX">
+            <img
+              className=" border-8  hover:border-green-500 border-white rounded-full "
+              src="./icono-ux.svg"
+              width="110px"
               alt=""
             />
           </Link>
         </div>
-        <div>
-          <Link to="/UX">
-            <img
-              src="https://cdn.hackr.io/uploads/topics_svg/152109895592bCOLJWwr.svg"
-              width="70px"
-              alt=""
-            />
-          </Link>
-        </div>
-        <Navbar />
+      </div>
+      <div className="bg-slate-800 pt-7">
+      <Navbar />
       </div>
     </div>
   );

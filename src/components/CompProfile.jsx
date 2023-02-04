@@ -1,20 +1,21 @@
-import React from 'react'
-import { useAuth0 } from '@auth0/auth0-react'
+import React from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const CompProfile = () => {
-    const {user, isAuthenticated, isLoading} = useAuth0()
+  const { user, isAuthenticated, isLoading } = useAuth0();
   if (isLoading) {
-    return <div>Loading...</div>
+    return <div>Lodading...</div>;
   }
   return (
-    isAuthenticated &&(
-        <div>
-            <img src={user.picture} alt={user.name} />
-            <h2>{user.name}</h2>
-            <p>Email: {user.email}</p>
-        </div>
+    isAuthenticated && (
+      <div className="bg-gray-400 flex flex-col ">
+        <img src={user.picture} className="" alt={user.name} />
+        <h2 className="bg-black">{user.name}</h2>
+        <p className="bg-black">Email : {user.email}</p>
+        <p className="bg-black">{user.website}</p>
+      </div>
     )
-    )
-}
+  );
+};
 
-export default CompProfile
+export default CompProfile;
