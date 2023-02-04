@@ -10,6 +10,9 @@ export const incorrectQuestionsToLs = () => {
 }
 
 export const timerToLs = (minutos) => {
+    if(minutos === 0){
+        minutos = 1;
+    }
     console.log('local '+ minutos)
     if(localStorage.getItem("dataTimer") != null ){
         const previousTime = localStorage.getItem("dataTimer");
