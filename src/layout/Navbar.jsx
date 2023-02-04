@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Timer from "../components/Timer";
 
 const Navbar = () => {
   return (
@@ -14,7 +15,7 @@ const Navbar = () => {
         </Link>
 
 
-        <Link to="/statistics">
+        <Link to="/statistics" >
           <img
             src="./icono-statistics.svg"
             width="40px"

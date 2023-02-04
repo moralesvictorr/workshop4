@@ -1,14 +1,15 @@
 import React from 'react'
 import Navbar from '../layout/Navbar'
 import Timer from '../components/Timer'
+import { renderTime } from '../components/Timer'
+
 const Statistics = () => {
   return (
     <div>
       <h1>Statistics</h1>
 
       <div>
-        <h2>Tiempo de estudio:{"EN PROCESO"}</h2>
-        <Timer />
+        <h2>Tiempo de estudio:{renderTime()}</h2>
       </div>
 
       <div>

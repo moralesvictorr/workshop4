@@ -1,31 +1,24 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 
-export const incorrectQuestionsToLs = () => {
-    if(localStorage.getItem("incorrectQuestions") != null ){
-        const number = localStorage.getItem("incorrectQuestions");
-        localStorage.setItem("incorrectQuestions", JSON.stringify(parseInt(number) + 1));
-    }else{
-        localStorage.setItem("incorrectQuestions", JSON.stringify(1));
-    }
-}
+export const renderTime = () => {
+    const hourTime = localStorage.getItem("dataTimer");
+    if (!hourTime) return "0 Min";
+    return hourTime < 60
+      ? `${hourTime} Min`
+      : `${Math.trunc(hourTime / 60)} Hours`;
+  };
 
-export const timerToLs = (minutos) => {
-    if(minutos === 0){
-        minutos = 1;
-    }
-    console.log('local '+ minutos)
-    if(localStorage.getItem("dataTimer") != null ){
-        const previousTime = localStorage.getItem("dataTimer");
-        localStorage.setItem("dataTimer", JSON.stringify(parseInt(previousTime) + parseInt(minutos)));
-    }else{
-        localStorage.setItem("dataTimer", JSON.stringify(parseInt(minutos)));
-    }
-}
+export const timerToLs = (minutes) => {
+    console.log("TIMER TO LS")
+    minutes = 1;
+    let previousTime = localStorage.getItem("dataTimer");
+    previousTime = previousTime ? JSON.parse(previousTime) + minutes : minutes;
+    localStorage.setItem("dataTimer", JSON.stringify(previousTime));
+  };
 
-const Timer = () => {
-    const [seconds, setSeconds] =useState(0);
-    const [minutes, setMinutes] =useState(0);
-    const [hours, setHours] =useState(0);
+export const Timer = () => {
+    const [seconds, setSeconds] = useState(0);
+    let [minutes, setMinutes] = useState(0);
 
     var timer;
 
@@ -35,44 +28,17 @@ const Timer = () => {
             setSeconds(seconds + 1);
         }, 1000)
 
-        if (seconds === 59){
+        if (seconds === 59) {
             setMinutes(minutes + 1);
             setSeconds(0);
+            minutes = timerToLs(minutes)
+
         }
-        if (minutes === 59){
-            setHours(hours + 1);
-            setMinutes(0);
-        }
-    return () => clearInterval(timer);
+        return () => clearInterval(timer);
     });
-    const restart = () => {
 
-        console.log('min ' + minutes)
-        timerToLs(minutes)
-        setHours(0);
-        setSeconds(0);
-        setMinutes(0);
-    }
+    return (
+        <p>Minutos:{minutes} Segundos{seconds}</p>
+    )
 
-    const renderTime = () => {
-        const hourTime = localStorage.getItem('dataTimer');
-        if (hourTime < 60) {
-            return hourTime + ' Min'
-        } else {
-            return Math.trunc(hourTime / 60) + ' Hours'
-        }
-    }
-
-  return (
-    <div>
-        <p>
-            {minutes< 10 ? "0" + minutes: minutes}:
-            {seconds < 10 ? "0" + seconds: seconds}
-        </p>
-        <p>{renderTime()}</p>
-        <button onClick={restart}>Reset</button>
-    </div>
-  )
 }
-
-export default Timer
