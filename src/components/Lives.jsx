@@ -5,6 +5,10 @@ export const getFromLocalStorage = () => {
   return JSON.parse(lives)
 };
 
+export const setLivesToLocalStorage = (number) => {
+  localStorage.setItem("lives", JSON.stringify(number));
+}
+
 export const subtractLive = (dataLives,setDataLives) => {
   if (dataLives > 0) {
   const newLives = dataLives - 1;
@@ -13,9 +17,7 @@ export const subtractLive = (dataLives,setDataLives) => {
   }
   };
 
-export const Lives = () => {
-  const [dataLives, setDataLives] = React.useState(getFromLocalStorage());
-
+export const Lives = (dataLives,setDataLives) => {
   return (
     <div>
       <h2>Data from Local Storage: {JSON.stringify(dataLives)}</h2>

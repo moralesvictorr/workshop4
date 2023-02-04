@@ -1,20 +1,20 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { questionHTML, questionCSS, questionFigma, questionUX, questionJS } from "../data/Questionario";
-import { Lives, getFromLocalStorage } from "../components/Lives";
-
-
-const Questionary = () => {
-  /* ------------   IDENTIFICANDO CATEGORIA----------------   */
+import { Lives, getFromLocalStorage, subtractLive, setLivesToLocalStorage } from "../components/Lives";
+import { correctQuestionsToLs, incorrectQuestionsToLs, totalQuestionsToLs, timeToLs } from "../components/HandleStats";
+// Funcion que retorna la categoria de la url
+const matchCategory = () => {
   const nameUrl = window.location.href;
   const words = nameUrl.split("/");
-  const category = words.find(element =>
+  return words.find(element =>
     ["js", "html", "css", "figma", "ux"].includes(
       element.toLocaleLowerCase()
     )
   );
-  const navigate = useNavigate();
-  /* ------------  Traemos los datos dependiendo de categoria ----------------   */
+}
+/* ------------  Traemos los datos dependiendo de categoria ----------------   */
+const getQuestionsArray = (category) => {
   const questionData = { // Objeto con las data correspondiente a cada categoria
     HTML: questionHTML,
     CSS: questionCSS,
@@ -23,7 +23,23 @@ const Questionary = () => {
     JS: questionJS
   };
 
-  let questions = questionData[category] // Vector con las preguntas de la categoria seleccionada
+  return questionData[category] // Vector con las preguntas de la categoria seleccionada
+}
+
+
+/* EMPIEZA EL COMOPONENTE QUESTIONARY */
+const Questionary = () => {
+  // Declarations of variables
+  const [dataLives, setDataLives] = React.useState(getFromLocalStorage());
+  /*   const [correctQuestions, setCorrectQuestions] = React.useState(0);
+    const [incorrectQuestions, setIncorrectQuestions] = React.useState(0);
+    const [totalQuestions, setTotalQuestions] = React.useState(0);
+    const [time, setTime] = React.useState(0); */
+  const navigate = useNavigate();
+
+  // Runnung functions
+  const category = matchCategory(); // Identificamos la categoria de la url
+  const questions = getQuestionsArray(category); // Obtenemos el vector de preguntas de la categoria seleccionada
 
   /* ------------------ Variables con useState para capturar la info a mostrar---------------------- */
   let [contador, setContador] = React.useState(0); // Contador de preguntas
@@ -36,25 +52,51 @@ const Questionary = () => {
 
   /* ------------  FUNCION QUE VALIDA SI LA RESPUESTA ENVIADA ES CORRECTA --------------------------- */
   const validateOption = (respuesta) => {
-    respuesta === correct ? alert("Correcto") : alert("Incorrecto");
+    if (respuesta === correct) {
+      alert("Correcto");
+      correctQuestionsToLs();
+    } else {
+      if (dataLives > 1) {
+        alert("Incorrecto");
+        subtractLive(dataLives, setDataLives);
+        incorrectQuestionsToLs();
+      } else {
+        setLivesToLocalStorage(4);
+        navigate("/home");
+      }
+    }
+    totalQuestionsToLs();
   }
-
   /* ------------------- FUNCION QUE VALIDA EL ENVIO DEL FORMULARIO  --------------- */
   function handleSubmit(evt) {
     evt.preventDefault(); // Evita que se recargue la pagina
     console.log("Formulario enviado");
     validateOption(selectedValue); // Validamos la opcion enviada
     setSelectedValue("") // Limpiamos el input seleccionado
+    /* ------ Hace uso de setMethods para pasar a la siguiente pregunta----  */
+    const nextQuestion = (questions) => {
+      if (contador === questions.length - 1) {
+        alert("Terminaste el cuestionario");
+        setLivesToLocalStorage(4);
+        navigate("/statistics");
+      } else {
+        if (contador === 0) {
+          contador = 1;// Para que no se repita la primera pregunta
+        }
+        setContador(contador + 1);
+        setPregunta(questions[contador].question);
+        setA(questions[contador].a);
+        setB(questions[contador].b);
+        setC(questions[contador].c);
+        setD(questions[contador].d);
+        setCorrect(questions[contador].correct);
+        console.log("Contador: ", contador)
+      }
+    }
+      nextQuestion(questions);
 
-    /* ------ Hace uso de useState, exactamente de los metodos set para pasar a la siguiente pregunta----  */
-    setContador(contador + 1);
-    setPregunta(questions[contador].question);
-    setA(questions[contador].a);
-    setB(questions[contador].b);
-    setC(questions[contador].c);
-    setD(questions[contador].d);
-    setCorrect(questions[contador].correct);
   }
+
   /* ---------------  USE STATE y METODO PARA SABER INPUT SELECCIONADO -------- */
   const [selectedValue, setSelectedValue] = React.useState('');
   const handleChange = (event) => {
@@ -85,9 +127,9 @@ const Questionary = () => {
       </form>
 
       <h2>Selected radio: {selectedValue}</h2>
-      <Lives />
+      <Lives dataLives={dataLives} setDataLives={setDataLives} />
 
-      <button className="bg-gray-500 text-white" onClick={() => navigate("/home")}>
+      <button className="bg-gray-500 text-white" onClick={() => { navigate("/home"); setLivesToLocalStorage(4) }}>
         HOME
       </button>
     </div>
