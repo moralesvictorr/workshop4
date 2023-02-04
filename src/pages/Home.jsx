@@ -11,7 +11,7 @@ const Home = () => {
       </h1>
       <div className=" flex gap-7 flex-col">
         <div className="flex justify-center pt-5">
-          <Link to="/questionHTML">
+          <Link to="/HTML">
             <img
               className=" border-8 hover:border-green-500 border-white rounded-full  "
               src="./icono-html.svg"
@@ -22,7 +22,7 @@ const Home = () => {
         </div>
 
         <div className=" flex justify-center space-x-7">
-          <Link to="/questionCSS">
+          <Link to="/CSS">
             <img
               className="border-8  hover:border-green-500 border-white rounded-full "
               src="./icono-css.svg"
@@ -30,7 +30,7 @@ const Home = () => {
               alt=""
             />
           </Link>
-          <Link to="/questionJS">
+          <Link to="/JS">
             <img
               className="  border-8  hover:border-green-500 border-white rounded-full"
               src="./icono-js.svg"
@@ -41,7 +41,7 @@ const Home = () => {
         </div>
 
         <div className=" flex justify-center space-x-11">
-          <Link to="/questionFIGMA">
+          <Link to="/FIGMA">
             <img
               className=" border-8  hover:border-green-500 border-white rounded-full "
               src="./icono-figma.svg"
@@ -49,7 +49,7 @@ const Home = () => {
               alt=""
             />
           </Link>
-          <Link to="/questionUX">
+          <Link to="/UX">
             <img
               className=" border-8  hover:border-green-500 border-white rounded-full "
               src="./icono-ux.svg"

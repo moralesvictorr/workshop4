@@ -78,7 +78,7 @@ const Questionary = () => {
       if (contador === questions.length - 1) {
         alert("Terminaste el cuestionario");
         setLivesToLocalStorage(4);
-        navigate("/statistics");
+        navigate("/home");
       } else {
         if (contador === 0) {
           contador = 1;// Para que no se repita la primera pregunta
