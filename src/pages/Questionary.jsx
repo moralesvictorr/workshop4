@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { questionHTML, questionCSS, questionFigma, questionUX, questionJS } from "../data/Questionario";
 import { Lives, getFromLocalStorage, subtractLive, setLivesToLocalStorage } from "../components/Lives";
 import { correctQuestionsToLs, incorrectQuestionsToLs, totalQuestionsToLs } from "../components/HandleStats";
-import { Timer,renderTime } from "../components/Timer";
+import { Timer, renderTime } from "../components/Timer";
 // Funcion que retorna la categoria de la url
 const matchCategory = () => {
   const nameUrl = window.location.href;
@@ -87,44 +87,59 @@ const Questionary = () => {
         setC(questions[contador].c);
         setD(questions[contador].d);
         setCorrect(questions[contador].correct);
-        console.log("Contador: ", contador)
       }
     }
-      nextQuestion(questions);
+    nextQuestion(questions);
 
   }
 
   /* ---------------  USE STATE y METODO PARA SABER INPUT SELECCIONADO -------- */
   const [selectedValue, setSelectedValue] = React.useState('');
-  const handleChange = (event) => {
-    setSelectedValue(event.target.value)
-  }
+
+    const handleChange = (event) => {
+      setSelectedValue(event.target.value)
+    }
+    /* function handleCheckboxChange(id) {
+      setSelected(id);
+    } */
+    const [selected, setSelected] = React.useState(null);
+
   return (
-    <div>
-      <form onSubmit={handleSubmit} >
+    <div className="bg-neutral-900 h-screen p-4">
+
+      <form className="" onSubmit={handleSubmit} >
         <h2>TIEMPO: {renderTime()}</h2>
-      <Timer />{/* Inicializa el cronometro("TIMER")  */}
+        <Timer />{/* Inicializa el cronometro("TIMER")  */}
         <h1>Questionary</h1>
         <h2>Estamos en la categoria: {category}</h2>
+        <h2 className="text-white text-xl">{pregunta}</h2>
 
-        <h2>{pregunta}</h2>
-        <label htmlFor="a">A. {a}</label>
-        <input value='a' type="radio" id="a" name="pregunta" checked={selectedValue === 'a'} onChange={handleChange} />
 
-        <label htmlFor="b">B. {b}</label>
-        <input value='b' type="radio" id="b" name="pregunta" checked={selectedValue === 'b'} onChange={handleChange} />
+        <div className="relative m-5 flex bg-slate-300">
+          <input value={'a'} checked={selected === 'a'} onChange={(evt) => {handleChange(evt); setSelected('a')}} type="checkbox" id="a" className="peer absolute top-[calc(50%-theme(spacing.2))] right-5 h-5 w-5 rounded-full accent-lime-600" />
+          <label htmlFor="a" className="select-none rounded border-2 p-4  pl-5 w-full font-bold transition-colors duration-200 ease-in-out peer-checked:border-lime-600 peer-checked:text-lime-600"> {a} </label>
+        </div>
 
-        <label htmlFor="c">C. {c}</label>
-        <input value='c' type="radio" id="c" name="pregunta" checked={selectedValue === 'c'} onChange={handleChange} />
+        <div className="relative m-5 flex bg-slate-300">
+          <input value={'b'} checked={selected === 'b'} onChange={(evt) => {handleChange(evt); setSelected('b')}} type="checkbox" id="b" className="peer absolute top-[calc(50%-theme(spacing.2))] right-5 h-5 w-5 rounded-full accent-lime-600" />
+          <label htmlFor="b" className="select-none rounded border-2 p-4  pl-5 w-full font-bold transition-colors duration-200 ease-in-out peer-checked:border-lime-600 peer-checked:text-lime-600"> {b} </label>
+        </div>
 
-        <label htmlFor="d">D. {d}</label>
-        <input value='d' type="radio" id="d" name="pregunta" checked={selectedValue === 'd'} onChange={handleChange} />
+        <div className="relative m-5 flex bg-slate-300">
+          <input value={'c'} checked={selected === 'c'} onChange={(evt) => {handleChange(evt); setSelected('c')}} type="checkbox" id="c" className="peer absolute top-[calc(50%-theme(spacing.2))] right-5 h-5 w-5 rounded-full accent-lime-600" />
+          <label htmlFor="c" className="select-none rounded border-2 p-4  pl-5 w-full font-bold transition-colors duration-200 ease-in-out peer-checked:border-lime-600 peer-checked:text-lime-600"> {c} </label>
+        </div>
+
+        <div className="relative m-5 flex bg-slate-300">
+          <input value={'d'} checked={selected === 'd'} onChange={(evt) => {handleChange(evt); setSelected('d')}} type="checkbox" id="d" className="peer absolute top-[calc(50%-theme(spacing.2))] right-5 h-5 w-5 rounded-full accent-lime-600" />
+          <label htmlFor="d" className="select-none rounded border-2 p-4  pl-5 w-full font-bold transition-colors duration-200 ease-in-out peer-checked:border-lime-600 peer-checked:text-lime-600"> {d} </label>
+        </div>
 
         <button className="bg-gray-400"  >Comprobar</button>
 
       </form>
 
-      <h2>Selected radio: {selectedValue}</h2>
+      <h2>Selected radio: {selected}</h2>
       <Lives dataLives={dataLives} setDataLives={setDataLives} />
 
       <button className="bg-gray-500 text-white" onClick={() => { navigate("/home"); setLivesToLocalStorage(4) }}>
