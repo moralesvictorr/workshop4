@@ -5,14 +5,12 @@ const Navbar = () => {
   return (
     <div className=" bg-slate-800 ">
       <div className=" bg-cyan-900 flex justify-around ">
-       
-        <Link to="/home" >
+        <Link to="/home">
           <img src="./icono-home.svg" width="40px" alt="icono-home" />
           <span className="text-white text-sm font-anton hover:text-green-500">
             HOME
           </span>
         </Link>
-
 
         <Link to="/statistics">
           <img
@@ -25,16 +23,12 @@ const Navbar = () => {
           </span>
         </Link>
 
-
         <Link to="/profile">
           <img src="./icono-profile.svg" width="40px" alt="icono-profile" />
           <span className="text-white text-sm font-anton hover:text-green-500">
             PROFILE
           </span>
         </Link>
-
-
-
       </div>
     </div>
   );
