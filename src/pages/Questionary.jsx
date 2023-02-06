@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { questionHTML, questionCSS, questionFigma, questionUX, questionJS } from "../data/Questionario";
 import { Lives, getFromLocalStorage, subtractLive, setLivesToLocalStorage } from "../components/Lives";
 import { correctQuestionsToLs, incorrectQuestionsToLs, totalQuestionsToLs } from "../components/HandleStats";
-import { Timer, renderTime } from "../components/Timer";
+import { Timer } from "../components/Timer";
 // Funcion que retorna la categoria de la url
 const matchCategory = () => {
   const nameUrl = window.location.href;
@@ -94,57 +94,69 @@ const Questionary = () => {
   }
 
   /* ---------------  USE STATE y METODO PARA SABER INPUT SELECCIONADO -------- */
-  const [selectedValue, setSelectedValue] = React.useState('');
+  const [selectedValue, setSelectedValue] = React.useState(''); // Variable que guarda el valor del input seleccionado
+  const [selected, setSelected] = React.useState(null);//Variable que cambia el input seleccionado ( Logica de Checkbox)
 
-    const handleChange = (event) => {
-      setSelectedValue(event.target.value)
-    }
-    /* function handleCheckboxChange(id) {
-      setSelected(id);
-    } */
-    const [selected, setSelected] = React.useState(null);
+  const handleChange = (event) => {
+    setSelectedValue(event.target.value)
+  }
 
   return (
     <div className="bg-neutral-900 h-screen p-4">
 
+      {/*    Elementos: Close, ProgressBar, Lives */}
+      <div className="flex gap-5 items-center ml-5 mr-4">
+        <button className="" onClick={() => { navigate("/home") }}>✖️</button>
+
+        <div class="w-full bg-gray-200 rounded-full h-3 dark:bg-white">
+          <div class="bg-emerald-500 h-3 rounded-full" style={{ width: "40%" }}></div>
+        </div>
+        <div className="w-10">
+          <Lives dataLives={dataLives} setDataLives={setDataLives} />
+        </div>
+      </div>
+
+      {/*  FORM  */}
       <form className="" onSubmit={handleSubmit} >
-        <h2>TIEMPO: {renderTime()}</h2>
+
+        
         <Timer />{/* Inicializa el cronometro("TIMER")  */}
-        <h1>Questionary</h1>
-        <h2>Estamos en la categoria: {category}</h2>
-        <h2 className="text-white text-xl">{pregunta}</h2>
 
+        {/* Elementos: IMG, Question Tittle */}
+        <div className="grid justify-center mt-16 mb-16">
 
-        <div className="relative m-5 flex bg-slate-300">
-          <input value={'a'} checked={selected === 'a'} onChange={(evt) => {handleChange(evt); setSelected('a')}} type="checkbox" id="a" className="peer absolute top-[calc(50%-theme(spacing.2))] right-5 h-5 w-5 rounded-full accent-lime-600" />
-          <label htmlFor="a" className="select-none rounded border-2 p-4  pl-5 w-full font-bold transition-colors duration-200 ease-in-out peer-checked:border-lime-600 peer-checked:text-lime-600"> {a} </label>
+          <h1 className="text-white text-2xl">{pregunta}</h1>
         </div>
 
-        <div className="relative m-5 flex bg-slate-300">
-          <input value={'b'} checked={selected === 'b'} onChange={(evt) => {handleChange(evt); setSelected('b')}} type="checkbox" id="b" className="peer absolute top-[calc(50%-theme(spacing.2))] right-5 h-5 w-5 rounded-full accent-lime-600" />
-          <label htmlFor="b" className="select-none rounded border-2 p-4  pl-5 w-full font-bold transition-colors duration-200 ease-in-out peer-checked:border-lime-600 peer-checked:text-lime-600"> {b} </label>
+
+        <div className="relative m-5 flex bg-slate-800">
+          <input value={'a'} checked={selected === 'a'} onChange={(evt) => { handleChange(evt); setSelected('a') }} type="checkbox" id="a" className="peer absolute top-[calc(50%-theme(spacing.2))] right-5 h-5 w-5 rounded-full accent-emerald-500" />
+          <label htmlFor="a" className="text-white select-none rounded border-2 p-4  pl-5 w-full font-bold transition-colors duration-200 ease-in-out peer-checked:border-emerald-500 peer-checked:text-emerald-200"> {a} </label>
         </div>
 
-        <div className="relative m-5 flex bg-slate-300">
-          <input value={'c'} checked={selected === 'c'} onChange={(evt) => {handleChange(evt); setSelected('c')}} type="checkbox" id="c" className="peer absolute top-[calc(50%-theme(spacing.2))] right-5 h-5 w-5 rounded-full accent-lime-600" />
-          <label htmlFor="c" className="select-none rounded border-2 p-4  pl-5 w-full font-bold transition-colors duration-200 ease-in-out peer-checked:border-lime-600 peer-checked:text-lime-600"> {c} </label>
+        <div className="relative m-5 flex bg-slate-800">
+          <input value={'b'} checked={selected === 'b'} onChange={(evt) => { handleChange(evt); setSelected('b') }} type="checkbox" id="b" className="peer absolute top-[calc(50%-theme(spacing.2))] right-5 h-5 w-5 rounded-full accent-emerald-500" />
+          <label htmlFor="b" className="text-white  select-none rounded border-2 p-4  pl-5 w-full font-bold transition-colors duration-200 ease-in-out peer-checked:border-emerald-500 peer-checked:text-emerald-200"> {b} </label>
         </div>
 
-        <div className="relative m-5 flex bg-slate-300">
-          <input value={'d'} checked={selected === 'd'} onChange={(evt) => {handleChange(evt); setSelected('d')}} type="checkbox" id="d" className="peer absolute top-[calc(50%-theme(spacing.2))] right-5 h-5 w-5 rounded-full accent-lime-600" />
-          <label htmlFor="d" className="select-none rounded border-2 p-4  pl-5 w-full font-bold transition-colors duration-200 ease-in-out peer-checked:border-lime-600 peer-checked:text-lime-600"> {d} </label>
+        <div className="relative m-5 flex bg-slate-800">
+          <input value={'c'} checked={selected === 'c'} onChange={(evt) => { handleChange(evt); setSelected('c') }} type="checkbox" id="c" className="peer absolute top-[calc(50%-theme(spacing.2))] right-5 h-5 w-5 rounded-full accent-emerald-500" />
+          <label htmlFor="c" className="text-white select-none rounded border-2 p-4  pl-5 w-full font-bold transition-colors duration-200 ease-in-out peer-checked:border-emerald-500 peer-checked:text-emerald-200"> {c} </label>
         </div>
 
-        <button className="bg-gray-400"  >Comprobar</button>
+        <div className="relative m-5 flex bg-slate-800">
+          <input value={'d'} checked={selected === 'd'} onChange={(evt) => { handleChange(evt); setSelected('d') }} type="checkbox" id="d" className="peer absolute top-[calc(50%-theme(spacing.2))] right-5 h-5 w-5 rounded-full accent-emerald-500" />
+          <label htmlFor="d" className="text-white select-none rounded border-2 p-4  pl-5 w-full font-bold transition-colors duration-200 ease-in-out peer-checked:border-emerald-500 peer-checked:text-emerald-200"> {d} </label>
+        </div>
+
+        <button className="right-5 h-12 w-full rounded-2xl text-white bg-violet-500   accent-emerald-500" >COMPROBAR</button>
 
       </form>
 
-      <h2>Selected radio: {selected}</h2>
-      <Lives dataLives={dataLives} setDataLives={setDataLives} />
 
-      <button className="bg-gray-500 text-white" onClick={() => { navigate("/home"); setLivesToLocalStorage(4) }}>
+{/*       <button className="bg-gray-500 text-white" onClick={() => { navigate("/home"); setLivesToLocalStorage(4) }}>
         HOME
-      </button>
+      </button> */}
     </div>
   );
 };

@@ -19,8 +19,8 @@ export const subtractLive = (dataLives,setDataLives) => {
 
 export const Lives = (dataLives,setDataLives) => {
   return (
-    <div>
-      <h2>Data from Local Storage: {JSON.stringify(dataLives)}</h2>
+    <div className=''>
+      <h2 className='text-white' >❤️{" "+ JSON.stringify(dataLives.dataLives)}</h2>
     </div>
   );
 };

@@ -38,7 +38,7 @@ export const Timer = () => {
     });
 
     return (
-        <p>Minutos:{minutes} Segundos{seconds}</p>
+        <p className='flex text-lg text-gray-300 justify-center'>Timer: {minutes} min : {seconds} s</p>
     )
 
 }
