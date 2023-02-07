@@ -37,7 +37,7 @@ const Questionary = () => {
   // Runnung functions
   const category = matchCategory(); // Identificamos la categoria de la url
   const questions = getQuestionsArray(category); // Obtenemos el vector de preguntas de la categoria seleccionada
-
+console.log( questions)
   /* ------------------ Variables con useState para capturar la info a mostrar---------------------- */
   let [contador, setContador] = React.useState(0); // Contador de preguntas
   let [pregunta, setPregunta] = React.useState(questions[contador].question); // Variable en la que iremos itereando las preguntas
@@ -50,9 +50,13 @@ const Questionary = () => {
   /* ------------  FUNCION QUE VALIDA SI LA RESPUESTA ENVIADA ES CORRECTA --------------------------- */
   const validateOption = (respuesta) => {
     if (respuesta === correct) {
+      console.log(respuesta)
+      console.log(correct)
       alert("Correcto");
       correctQuestionsToLs();
+      setShowToast(true);
     } else {
+      console.log("FALSO")
       if (dataLives > 1) {
         alert("Incorrecto");
         subtractLive(dataLives, setDataLives);
@@ -68,18 +72,20 @@ const Questionary = () => {
   function handleSubmit(evt) {
     evt.preventDefault(); // Evita que se recargue la pagina
     console.log("Formulario enviado");
-    validateOption(selectedValue); // Validamos la opcion enviada
-    setSelectedValue("") // Limpiamos el input seleccionado
+    validateOption(selected); // Validamos la opcion enviada
+    setSelected("") // Limpiamos el input seleccionado
     /* ------ Hace uso de setMethods para pasar a la siguiente pregunta----  */
     const nextQuestion = (questions) => {
+      console.log(contador)
+      if (contador === 0) {
+        contador = 1;// Para que no se repita la primera pregunta
+      }
+
       if (contador === questions.length - 1) {
         alert("Terminaste el cuestionario");
         setLivesToLocalStorage(4);
         navigate("/home");
       } else {
-        if (contador === 0) {
-          contador = 1;// Para que no se repita la primera pregunta
-        }
         setContador(contador + 1);
         setPregunta(questions[contador].question);
         setA(questions[contador].a);
@@ -94,22 +100,19 @@ const Questionary = () => {
   }
 
   /* ---------------  USE STATE y METODO PARA SABER INPUT SELECCIONADO -------- */
-  const [selectedValue, setSelectedValue] = React.useState(''); // Variable que guarda el valor del input seleccionado
-  const [selected, setSelected] = React.useState(null);//Variable que cambia el input seleccionado ( Logica de Checkbox)
+  const [selected, setSelected] = React.useState("");//Variable que cambia el input seleccionado ( Logica de Checkbox)
 
-  const handleChange = (event) => {
-    setSelectedValue(event.target.value)
-  }
+  const [showToast, setShowToast] = React.useState(false);
 
   return (
-    <div className="bg-neutral-900 h-screen p-4">
+    <div className=" bg-neutral-900 h-screen p-4">
 
       {/*    Elementos: Close, ProgressBar, Lives */}
       <div className="flex gap-5 items-center ml-5 mr-4">
         <button className="" onClick={() => { navigate("/home") }}>✖️</button>
 
-        <div class="w-full bg-gray-200 rounded-full h-3 dark:bg-white">
-          <div class="bg-emerald-500 h-3 rounded-full" style={{ width: "40%" }}></div>
+        <div className="w-full bg-gray-200 rounded-full h-3 dark:bg-white">
+          <div className="bg-emerald-500 h-3 rounded-full" style={{ width: (contador * 130) }}></div>
         </div>
         <div className="w-10">
           <Lives dataLives={dataLives} setDataLives={setDataLives} />
@@ -130,33 +133,38 @@ const Questionary = () => {
 
 
         <div className="relative m-5 flex bg-slate-800">
-          <input value={'a'} checked={selected === 'a'} onChange={(evt) => { handleChange(evt); setSelected('a') }} type="checkbox" id="a" className="peer absolute top-[calc(50%-theme(spacing.2))] right-5 h-5 w-5 rounded-full accent-emerald-500" />
+          <input value={'a'} checked={selected === 'a'} onChange={(evt) => {  setSelected('a') }} type="checkbox" id="a" className="peer absolute top-[calc(50%-theme(spacing.2))] right-5 h-5 w-5 rounded-full accent-emerald-500" />
           <label htmlFor="a" className="text-white select-none rounded border-2 p-4  pl-5 w-full font-bold transition-colors duration-200 ease-in-out peer-checked:border-emerald-500 peer-checked:text-emerald-200"> {a} </label>
         </div>
 
         <div className="relative m-5 flex bg-slate-800">
-          <input value={'b'} checked={selected === 'b'} onChange={(evt) => { handleChange(evt); setSelected('b') }} type="checkbox" id="b" className="peer absolute top-[calc(50%-theme(spacing.2))] right-5 h-5 w-5 rounded-full accent-emerald-500" />
+          <input value={'b'} checked={selected === 'b'} onChange={(evt) => {  setSelected('b') }} type="checkbox" id="b" className="peer absolute top-[calc(50%-theme(spacing.2))] right-5 h-5 w-5 rounded-full accent-emerald-500" />
           <label htmlFor="b" className="text-white  select-none rounded border-2 p-4  pl-5 w-full font-bold transition-colors duration-200 ease-in-out peer-checked:border-emerald-500 peer-checked:text-emerald-200"> {b} </label>
         </div>
 
         <div className="relative m-5 flex bg-slate-800">
-          <input value={'c'} checked={selected === 'c'} onChange={(evt) => { handleChange(evt); setSelected('c') }} type="checkbox" id="c" className="peer absolute top-[calc(50%-theme(spacing.2))] right-5 h-5 w-5 rounded-full accent-emerald-500" />
+          <input value={'c'} checked={selected === 'c'} onChange={(evt) => {  setSelected('c') }} type="checkbox" id="c" className="peer absolute top-[calc(50%-theme(spacing.2))] right-5 h-5 w-5 rounded-full accent-emerald-500" />
           <label htmlFor="c" className="text-white select-none rounded border-2 p-4  pl-5 w-full font-bold transition-colors duration-200 ease-in-out peer-checked:border-emerald-500 peer-checked:text-emerald-200"> {c} </label>
         </div>
 
         <div className="relative m-5 flex bg-slate-800">
-          <input value={'d'} checked={selected === 'd'} onChange={(evt) => { handleChange(evt); setSelected('d') }} type="checkbox" id="d" className="peer absolute top-[calc(50%-theme(spacing.2))] right-5 h-5 w-5 rounded-full accent-emerald-500" />
+          <input value={'d'} checked={selected === 'd'} onChange={(evt) => {  setSelected('d') }} type="checkbox" id="d" className="peer absolute top-[calc(50%-theme(spacing.2))] right-5 h-5 w-5 rounded-full accent-emerald-500" />
           <label htmlFor="d" className="text-white select-none rounded border-2 p-4  pl-5 w-full font-bold transition-colors duration-200 ease-in-out peer-checked:border-emerald-500 peer-checked:text-emerald-200"> {d} </label>
         </div>
+
+        
 
         <button className="right-5 h-12 w-full rounded-2xl text-white bg-violet-500   accent-emerald-500" >COMPROBAR</button>
 
       </form>
+      {showToast && (
+        <div
+          className="fixed bottom-0 right-0 w-full h-72 bg-green-500 text-white rounded-lg shadow-lg"
+        >
+          Respuesta correcta
+        </div>
+      )}
 
-
-{/*       <button className="bg-gray-500 text-white" onClick={() => { navigate("/home"); setLivesToLocalStorage(4) }}>
-        HOME
-      </button> */}
     </div>
   );
 };
