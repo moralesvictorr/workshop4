@@ -117,7 +117,7 @@ export const questionCSS = [
 export const questionJS = [
     {
         
-        question: "¿Como debo exportar una Clase?",
+        question: "¿Cómo debo exportar una Clase?",
         a: "export default { ClassName }",
         b: "export { ClassName }",
         c: "export default ClassName",
@@ -126,7 +126,7 @@ export const questionJS = [
     },
     {
         
-        question: "¿Como se reepresenta al Spread Syntax?",
+        question: "¿Cómo se reepresenta al Spread Syntax?",
         a: "&&",
         b: "...",
         c: "||",
