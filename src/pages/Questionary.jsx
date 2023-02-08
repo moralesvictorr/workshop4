@@ -32,6 +32,8 @@ const getQuestionsArray = (category) => {
 
 /* EMPIEZA EL COMOPONENTE QUESTIONARY */
 const Questionary = () => {
+  let [localCorrectQuestions, setLocalCorrectQuestions] = React.useState(0); // Variable que guarda las preguntas correctas
+  let [localIncorrectQuestions, setLocalIncorrectQuestions] = React.useState(0); // Variable que guarda las preguntas incorrectas
   let [previousCorrect, setPreviusCorrect] = React.useState("") // Variable que guarda la respuesta correcta anterior
   let [previusSelected, setPreviusSelected] = React.useState("") // Variable que guarda la respuesta seleccionada anterior
   // Declarations of variables
@@ -39,7 +41,6 @@ const Questionary = () => {
   const navigate = useNavigate();
   /* ---------------  USE STATE y METODO PARA SABER INPUT SELECCIONADO -------- */
   const [selected, setSelected] = React.useState("");//Variable que cambia el input seleccionado ( Logica de Checkbox)
-
   /* USE STATE PARA EL FUTURO TOAST */
   const [showToast, setShowToast] = React.useState(false);
   setTimeout(() => {
@@ -75,6 +76,7 @@ const Questionary = () => {
 
       console.log("Correcto");
       correctQuestionsToLs();
+      setLocalCorrectQuestions(localCorrectQuestions + 1)
       setShowToast(true);
 
     } else if (dataLives > 1) {
@@ -85,7 +87,9 @@ const Questionary = () => {
       console.log("Incorrecto");
       subtractLive(dataLives, setDataLives);
       incorrectQuestionsToLs();
+      setLocalIncorrectQuestions(localIncorrectQuestions + 1)
     } else {
+      alert("Perdiste todas tus vidas, intenta de nuevo");
       setLivesToLocalStorage(4);
       navigate("/home");
     }
@@ -121,7 +125,7 @@ const Questionary = () => {
     labelResponse.classList.remove("border-red-500");
     labelCorrectIn.classList.remove("border-green-500");
     if (contador === questions.length) {
-      alert("Terminaste el cuestionario");
+      alert("Terminaste el cuestionario \n Correctas: " + localCorrectQuestions + "/6 \n Incorrectas: " + localIncorrectQuestions + "/6");
       setLivesToLocalStorage(4);
       navigate("/home");
     } else {
