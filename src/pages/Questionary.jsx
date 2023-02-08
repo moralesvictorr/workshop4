@@ -29,7 +29,6 @@ const getQuestionsArray = (category) => {
   return questionData[category] // Vector con las preguntas de la categoria seleccionada
 }
 
- console.log("Prueba")
 
 /* EMPIEZA EL COMOPONENTE QUESTIONARY */
 const Questionary = () => {
