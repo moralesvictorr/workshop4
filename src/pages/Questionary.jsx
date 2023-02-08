@@ -5,6 +5,7 @@ import { Lives, getFromLocalStorage, subtractLive, setLivesToLocalStorage } from
 import { correctQuestionsToLs, incorrectQuestionsToLs, totalQuestionsToLs } from "../components/HandleStats";
 import { Timer } from "../components/Timer";
 import Toast from "../components/Toast";
+import Swal from "sweetalert2";
 // Funcion que retorna la categoria de la url
 const matchCategory = () => {
   const nameUrl = window.location.href;
@@ -89,7 +90,8 @@ const Questionary = () => {
       incorrectQuestionsToLs();
       setLocalIncorrectQuestions(localIncorrectQuestions + 1)
     } else {
-      alert("Perdiste todas tus vidas, intenta de nuevo");
+      /* alert("Perdiste todas tus vidas, intenta de nuevo"); */
+      Swal.fire('Perdiste todas tus vidas', 'Intenta de nuevo','error')
       setLivesToLocalStorage(4);
       navigate("/home");
     }
@@ -125,7 +127,9 @@ const Questionary = () => {
     labelResponse.classList.remove("border-red-500");
     labelCorrectIn.classList.remove("border-green-500");
     if (contador === questions.length) {
-      alert("Terminaste el cuestionario \n Correctas: " + localCorrectQuestions + "/6 \n Incorrectas: " + localIncorrectQuestions + "/6");
+/*       alert("Terminaste el cuestionario \n Correctas: " + localCorrectQuestions + "/6 \n Incorrectas: " + localIncorrectQuestions + "/6");
+ */      Swal.fire('Terminaste el cuestionario', 'Correctas: ' + localCorrectQuestions + '/6 <br> Incorrectas: ' + localIncorrectQuestions + '/6','success')
+
       setLivesToLocalStorage(4);
       navigate("/home");
     } else {
