@@ -6,6 +6,14 @@ import { correctQuestionsToLs, incorrectQuestionsToLs, totalQuestionsToLs } from
 import { Timer } from "../components/Timer";
 import Toast from "../components/Toast";
 import Swal from "sweetalert2";
+
+function disableAllCheckboxes(bool) {
+  const checkboxes = document.querySelectorAll("input[type='checkbox']");
+  checkboxes.forEach(checkbox => {
+    checkbox.disabled = bool;
+  });
+}
+
 // Funcion que retorna la categoria de la url
 const matchCategory = () => {
   const nameUrl = window.location.href;
@@ -105,6 +113,9 @@ const Questionary = () => {
     evt.preventDefault(); // Evita que se recargue la pagina
     /* Ocultar boton Comprobar y mostrar boton Siguiente */
     document.querySelector(".btnSubmit").classList.add("hidden");
+
+    disableAllCheckboxes(true);
+
     document.querySelector(".btnNext").classList.remove("hidden");
     console.log("Formulario enviado");
     validateOption(); // Validamos la opcion enviada
@@ -113,13 +124,15 @@ const Questionary = () => {
   }
 
   /* -------------- FUNCION QUE REALIZA EL CAMBIO DE PREGUNTA */
-  const nextQuestion = (evt) => {
+    const nextQuestion = (evt) => {
     evt.preventDefault();
     console.log(previusSelected, "correct")
 
     /* Ocultar boton Siguiente y mostrar boton Comprobar */
     document.querySelector(".btnSubmit").classList.remove("hidden");
     document.querySelector(".btnNext").classList.add("hidden");
+    disableAllCheckboxes(false);
+
 
     let labelResponse = document.querySelector("." + `${previusSelected}`)
     let labelCorrectIn = document.querySelector("." + `${previousCorrect}`)
