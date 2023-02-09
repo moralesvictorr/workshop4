@@ -5,63 +5,57 @@ import Navbar from "../layout/Navbar";
 const Home = () => {
   const navigate = useNavigate();
   return (
-    <div className="bg-slate-800 grid grid-col  content-end h-screen w-screen">
-      <h1 className="text-white flex justify-center pt-5 font-anton text-xl ">
+    <div className="bg-slate-800 flex flex-col h-screen w-screen gap-2">
+      <h1 className="text-white flex justify-center p-2 mt-7 mb-5 font-anton text-xl ">
         Practica tus conocimientos en la categoria que prefieras.
       </h1>
-      <div className=" flex gap-7 flex-col">
-        <div className="flex justify-center pt-5">
-          <Link to="/HTML">
-            <img
-              className=" border-8 hover:border-green-500 border-white rounded-full  "
-              src="./icono-html.svg"
-              width="110px"
-              alt=""
-            />
-          </Link>
-        </div>
-
-        <div className=" flex justify-center space-x-7">
-          <Link to="/CSS">
-            <img
-              className="border-8  hover:border-green-500 border-white rounded-full "
-              src="./icono-css.svg"
-              width="110px"
-              alt=""
-            />
-          </Link>
-          <Link to="/JS">
-            <img
-              className="  border-8  hover:border-green-500 border-white rounded-full"
-              src="./icono-js.svg"
-              width="110px"
-              alt=""
-            />
-          </Link>
-        </div>
-
-        <div className=" flex justify-center space-x-11">
-          <Link to="/FIGMA">
-            <img
-              className=" border-8  hover:border-green-500 border-white rounded-full "
-              src="./icono-figma.svg"
-              width="110px"
-              alt=""
-            />
-          </Link>
-          <Link to="/UX">
-            <img
-              className=" border-8  hover:border-green-500 border-white rounded-full "
-              src="./icono-ux.svg"
-              width="110px"
-              alt=""
-            />
-          </Link>
-        </div>
+      <div className="mx-auto w-full flex justify-center">
+        <Link to="/HTML">
+          <img
+            className="w-20 border-8 hover:border-green-500 border-white rounded-full  "
+            src="./icono-html.svg"
+            width=""
+            alt=""
+          />
+        </Link>
       </div>
-      <div className="bg-slate-800 pt-7">
+      <div className="flex justify-center mx-auto gap-5 w-full">
+        <Link to="/CSS">
+          <img
+            className="border-8  hover:border-green-500 border-white rounded-full w-20"
+            src="./icono-css.svg"
+            width=""
+            alt=""
+          />
+        </Link>
+        <Link to="/JS">
+          <img
+            className="w-20 border-8  hover:border-green-500 border-white rounded-full"
+            src="./icono-js.svg"
+            width=""
+            alt=""
+          />
+        </Link>
+      </div>
+      <div className="flex justify-center mx-auto gap-5 w-full">
+      <Link to="/FIGMA">
+          <img
+            className="w-20 border-8  hover:border-green-500 border-white rounded-full "
+            src="./icono-figma.svg"
+            width=""
+            alt=""
+          />
+        </Link>
+        <Link to="/UX">
+          <img
+            className="w-20 border-8  hover:border-green-500 border-white rounded-full "
+            src="./icono-ux.svg"
+            width=""
+            alt=""
+          />
+        </Link>
+      </div>
       <Navbar />
-      </div>
     </div>
   );
 };
