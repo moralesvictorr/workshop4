@@ -6,7 +6,7 @@ const Home = () => {
   const navigate = useNavigate();
   return (
     <div className="bg-slate-800 flex flex-col h-screen w-screen gap-2">
-      <h1 className="text-white flex justify-center pt-5 font-anton text-xl ">
+      <h1 className="text-white flex justify-center p-2 mt-7 mb-5 font-anton text-xl ">
         Practica tus conocimientos en la categoria que prefieras.
       </h1>
       <div className="mx-auto w-full flex justify-center">
