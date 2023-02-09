@@ -1,8 +1,7 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import CompLogout2 from "../components/CompLogout2";
 import Navbar from "../layout/Navbar";
-import CompLogin from "../components/CompLogin";
+
 
 export const CompLogout = () => {
   const { logout } = useAuth0();
@@ -22,7 +21,7 @@ export const CompLogout = () => {
   );
 };
 
-export const CompProfile2 = () => {
+export const CompProfile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
   console.log(user);
   if (isLoading) {
@@ -52,8 +51,7 @@ export const CompProfile2 = () => {
 const Profile = () => {
   return (
     <div className="bg-slate-800 h-screen ">
-      <CompLogin />
-      <CompProfile2 />
+      <CompProfile  />
       <CompLogout />
 
       <div className="mt-36">
