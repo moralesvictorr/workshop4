@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faChartSimple } from '@fortawesome/free-solid-svg-icons';
-import { faUser } from '@fortawesome/free-regular-svg-icons';
-// import { faUser } from '@fortawesome/free-regular-svg-icons';
+import { faHome, faChartSimple,faUser } from '@fortawesome/free-solid-svg-icons';
+
 const Navbar = () => {
   return (
     <div className=" bg-slate-800  fixed bottom-0 w-screen text-center">
