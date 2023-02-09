@@ -9,7 +9,7 @@ import Questionary from "./pages/Questionary";
 export const router = createBrowserRouter(
 	createRoutesFromElements(
 		<>
-				<Route exact path="/" component={Login} />
+				<Route exact path="/" component={<Login />} />
 				<Route path="/home" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/statistics" element={<Statistics />} />
