@@ -146,63 +146,67 @@ const Questionary = () => {
   }
 
   return (
-    <div className=" bg-neutral-900 h-screen p-4">
+    <div className="bg-slate-800 h-screen p-4 flex justify-center">
 
       {/*    Elementos: Close, ProgressBar, Lives */}
-      <div className="flex gap-5 items-center ml-5 mr-4">
-        <button className="" onClick={() => { navigate("/home") }}>✖️</button>
+      <div className="container-2xl w-1/2 h-full">    
+        <div className="flex gap-5 items-center ">
+          <button className="" onClick={() => { navigate("/home") }}>✖️</button>
 
-        <div className="w-full bg-gray-200 rounded-full h-3 dark:bg-white">
-          <div className="bg-emerald-500 h-3 rounded-full" style={progressBarValue()}></div>
+          <div className="w-full bg-gray-200 rounded-full h-3 dark:bg-white">
+            <div className="bg-emerald-500 h-3 rounded-full" style={progressBarValue()}></div>
+          </div>
+          <div className="flex w-10">
+            <Lives dataLives={dataLives} setDataLives={setDataLives} />
+            ❤️
+          </div>
         </div>
-        <div className="w-10">
-          <Lives dataLives={dataLives} setDataLives={setDataLives} />
-        </div>
-      </div>
 
-      {/*  FORM  */}
-      <form className=""  >
+        {/*  FORM  */}
+        <form className=""  >
 
 
-        <Timer />{/* Inicializa el cronometro("TIMER")  */}
+          <Timer />{/* Inicializa el cronometro("TIMER")  */}
 
-        {/* Elementos: IMG, Question Tittle */}
-        <div className="grid justify-center mt-16 mb-16">
+          {/* Elementos: IMG, Question Tittle */}
+          {/* <div className="grid justify-center">
 
+            <h1 className="text-white text-2xl mb-2">{pregunta}</h1>
+          </div> */}
+        <div className="flex gap-16 items-center justify-center ">
+          <img className=" w-14" src="https://cdn.pixabay.com/photo/2020/11/22/04/58/child-5765632_1280.png" alt="animated kid" />
           <h1 className="text-white text-2xl">{pregunta}</h1>
         </div>
+        <div className="flex flex-col gap-2">
+          <div className="relative  flex bg-slate-800">
+            <input value={'a'} checked={selected === 'a'} onChange={(evt) => { setSelected('a') }} type="checkbox" id="a" className="peer absolute top-[calc(50%-theme(spacing.2))] right-5 h-5 w-5 rounded-full accent-emerald-500" />
+            <label htmlFor="a" className="a text-white select-none rounded border-2 p-4  pl-5 w-full font-bold transition-colors duration-200 ease-in-out peer-checked:border-emerald-500 peer-checked:text-emerald-200"> {a} </label>
+          </div>
 
+          <div className="relative  flex bg-slate-800">
+            <input value={'b'} checked={selected === 'b'} onChange={(evt) => { setSelected('b') }} type="checkbox" id="b" className="peer absolute top-[calc(50%-theme(spacing.2))] right-5 h-5 w-5 rounded-full accent-emerald-500" />
+            <label htmlFor="b" className="b text-white  select-none rounded border-2 p-4  pl-5 w-full font-bold transition-colors duration-200 ease-in-out peer-checked:border-emerald-500 peer-checked:text-emerald-200"> {b} </label>
+          </div>
 
-        <div className="relative m-5 flex bg-slate-800">
-          <input value={'a'} checked={selected === 'a'} onChange={(evt) => { setSelected('a') }} type="checkbox" id="a" className="peer absolute top-[calc(50%-theme(spacing.2))] right-5 h-5 w-5 rounded-full accent-emerald-500" />
-          <label htmlFor="a" className="a text-white select-none rounded border-2 p-4  pl-5 w-full font-bold transition-colors duration-200 ease-in-out peer-checked:border-emerald-500 peer-checked:text-emerald-200"> {a} </label>
-        </div>
+          <div className="relative  flex bg-slate-800">
+            <input value={'c'} checked={selected === 'c'} onChange={(evt) => { setSelected('c') }} type="checkbox" id="c" className="peer absolute top-[calc(50%-theme(spacing.2))] right-5 h-5 w-5 rounded-full accent-emerald-500" />
+            <label htmlFor="c" className="c text-white select-none rounded border-2 p-4  pl-5 w-full font-bold transition-colors duration-200 ease-in-out peer-checked:border-emerald-500 peer-checked:text-emerald-200"> {c} </label>
+          </div>
 
-        <div className="relative m-5 flex bg-slate-800">
-          <input value={'b'} checked={selected === 'b'} onChange={(evt) => { setSelected('b') }} type="checkbox" id="b" className="peer absolute top-[calc(50%-theme(spacing.2))] right-5 h-5 w-5 rounded-full accent-emerald-500" />
-          <label htmlFor="b" className="b text-white  select-none rounded border-2 p-4  pl-5 w-full font-bold transition-colors duration-200 ease-in-out peer-checked:border-emerald-500 peer-checked:text-emerald-200"> {b} </label>
-        </div>
+          <div className="relative  flex bg-slate-800">
+            <input value={'d'} checked={selected === 'd'} onChange={(evt) => { setSelected('d') }} type="checkbox" id="d" className="peer absolute top-[calc(50%-theme(spacing.2))] right-5 h-5 w-5 rounded-full accent-emerald-500" />
+            <label htmlFor="d" className="d text-white select-none rounded border-2 p-4  pl-5 w-full font-bold transition-colors duration-200 ease-in-out peer-checked:border-emerald-500 peer-checked:text-emerald-200"> {d} </label>
+          </div>
 
-        <div className="relative m-5 flex bg-slate-800">
-          <input value={'c'} checked={selected === 'c'} onChange={(evt) => { setSelected('c') }} type="checkbox" id="c" className="peer absolute top-[calc(50%-theme(spacing.2))] right-5 h-5 w-5 rounded-full accent-emerald-500" />
-          <label htmlFor="c" className="c text-white select-none rounded border-2 p-4  pl-5 w-full font-bold transition-colors duration-200 ease-in-out peer-checked:border-emerald-500 peer-checked:text-emerald-200"> {c} </label>
-        </div>
+          <button type="submit" onClick={handleSubmit} className="btnSubmit right-5 h-12 w-full rounded-2xl text-white bg-violet-500 " >COMPROBAR</button>
+        </div>  
 
-        <div className="relative m-5 flex bg-slate-800">
-          <input value={'d'} checked={selected === 'd'} onChange={(evt) => { setSelected('d') }} type="checkbox" id="d" className="peer absolute top-[calc(50%-theme(spacing.2))] right-5 h-5 w-5 rounded-full accent-emerald-500" />
-          <label htmlFor="d" className="d text-white select-none rounded border-2 p-4  pl-5 w-full font-bold transition-colors duration-200 ease-in-out peer-checked:border-emerald-500 peer-checked:text-emerald-200"> {d} </label>
-        </div>
-
-
-
-        <button type="submit" onClick={handleSubmit} className="btnSubmit right-5 h-12 w-full rounded-2xl text-white bg-violet-500 " >COMPROBAR</button>
-
-      </form>
-      <button onClick={nextQuestion} className="btnNext hidden right-5 h-12 w-full rounded-2xl text-white bg-blue-500 " >CONTINUAR</button>
-      {showToast && (
-        <Toast message="Respuesta BLABLA"/>
-      )}
-
+        </form>
+        <button onClick={nextQuestion} className="btnNext hidden right-5 h-12 w-full rounded-2xl text-white bg-blue-500 " >CONTINUAR</button>
+        {showToast && (
+          <Toast message="Respuesta BLABLA"/>
+        )}
+      </div>
     </div>
   );
 };
