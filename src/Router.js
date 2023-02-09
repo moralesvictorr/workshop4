@@ -9,13 +9,13 @@ import Questionary from "./pages/Questionary";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const {loginWithRedirect} = useAuth0(); 
-
+console.log("Login Router")
 export const router = createBrowserRouter(
 	createRoutesFromElements(
 		<>
                 {/* add         */}
 				<Route path="/" component={loginWithRedirect()} />
-                
+
 				<Route path="/home" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/statistics" element={<Statistics />} />
