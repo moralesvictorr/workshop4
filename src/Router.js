@@ -5,11 +5,17 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Statistics from "./pages/Statistics";
 import Questionary from "./pages/Questionary";
+// add
+import { useAuth0 } from "@auth0/auth0-react";
+
+const {loginWithRedirect} = useAuth0(); 
 
 export const router = createBrowserRouter(
 	createRoutesFromElements(
 		<>
-				<Route path="/" component={<Login />} />
+                {/* add         */}
+				<Route path="/" component={loginWithRedirect()} />
+                
 				<Route path="/home" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/statistics" element={<Statistics />} />
