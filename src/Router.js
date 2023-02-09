@@ -9,7 +9,7 @@ import Questionary from "./pages/Questionary";
 export const router = createBrowserRouter(
 	createRoutesFromElements(
 		<>
-				<Route exact path="/" component={<Login />} />
+				<Route path="/" component={<Login />} />
 				<Route path="/home" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/statistics" element={<Statistics />} />
@@ -19,7 +19,7 @@ export const router = createBrowserRouter(
                 <Route path="/JS" element={<Questionary />} />
                 <Route path="/FIGMA" element={<Questionary />} />
                 <Route path="/UX" element={<Questionary />} />
-                <Route path="*" element={<Home />} />
+                {/* <Route path="*" element={<Home />} /> */}
 
 		</>
 	)
