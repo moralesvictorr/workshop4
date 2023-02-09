@@ -2,7 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { questionHTML, questionCSS, questionFigma, questionUX, questionJS } from "../data/Questionario";
 import { Lives, getFromLocalStorage, subtractLive, setLivesToLocalStorage } from "../components/Lives";
-import { correctQuestionsToLs, incorrectQuestionsToLs, totalQuestionsToLs, timeToLs } from "../components/HandleStats";
+import { correctQuestionsToLs, incorrectQuestionsToLs, totalQuestionsToLs } from "../components/HandleStats";
+import { Timer,renderTime } from "../components/Timer";
 // Funcion que retorna la categoria de la url
 const matchCategory = () => {
   const nameUrl = window.location.href;
@@ -31,10 +32,6 @@ const getQuestionsArray = (category) => {
 const Questionary = () => {
   // Declarations of variables
   const [dataLives, setDataLives] = React.useState(getFromLocalStorage());
-  /*   const [correctQuestions, setCorrectQuestions] = React.useState(0);
-    const [incorrectQuestions, setIncorrectQuestions] = React.useState(0);
-    const [totalQuestions, setTotalQuestions] = React.useState(0);
-    const [time, setTime] = React.useState(0); */
   const navigate = useNavigate();
 
   // Runnung functions
@@ -104,8 +101,9 @@ const Questionary = () => {
   }
   return (
     <div>
-
       <form onSubmit={handleSubmit} >
+        <h2>TIEMPO: {renderTime()}</h2>
+      <Timer />{/* Inicializa el cronometro("TIMER")  */}
         <h1>Questionary</h1>
         <h2>Estamos en la categoria: {category}</h2>
 
