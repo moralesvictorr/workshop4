@@ -20,7 +20,7 @@ export const subtractLive = (dataLives,setDataLives) => {
 export const Lives = (dataLives,setDataLives) => {
   return (
     <div className=''>
-      <h2 className='text-white' >❤️{" "+ JSON.stringify(dataLives.dataLives)}</h2>
+      <h2 className='text-white' >{" "+ JSON.stringify(dataLives.dataLives)}</h2>
     </div>
   );
 };

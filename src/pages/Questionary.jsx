@@ -203,9 +203,9 @@ const Questionary = () => {
 
         </form>
         <button onClick={nextQuestion} className="btnNext hidden right-5 h-12 w-full rounded-2xl text-white bg-blue-500 " >CONTINUAR</button>
-        {showToast && (
+        {/* {showToast && (
           <Toast message="Respuesta BLABLA"/>
-        )}
+        )} */}
       </div>
     </div>
   );
