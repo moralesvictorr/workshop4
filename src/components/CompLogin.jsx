@@ -4,12 +4,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 const CompLogin = () => {
   const {loginWithRedirect} = useAuth0(); 
      console.log("hola")
-  return (
+  return document.addEventListener('DOMContentLoaded', loginWithRedirect() )
 
-      <button
-      className='text-slate-800'
-      onClick={() =>{loginWithRedirect()}}>Login</button>
-  );
 }
 
 export default CompLogin
