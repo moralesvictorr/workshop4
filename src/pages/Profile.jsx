@@ -30,12 +30,12 @@ export const CompProfile = () => {
   return (
     isAuthenticated && (
       <div
-        className=" flex flex-col items-center gap-5   mt-16
+        className=" flex flex-col items-center gap-5   
       "
       >
         <img
           src={user.picture}
-          className="border-4 hover:border-red-500 border-white rounded-full"
+          className="border-4 hover:border-red-500 border-white rounded-full mt-32"
           alt={user.name}
           width="100px"
           referrerPolicy="no-referrer"
@@ -53,10 +53,7 @@ const Profile = () => {
     <div className="bg-slate-800 h-screen ">
       <CompProfile  />
       <CompLogout />
-
-      <div className="mt-36">
         <Navbar />
-      </div>
     </div>
   );
 };
