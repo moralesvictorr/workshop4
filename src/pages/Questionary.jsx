@@ -151,7 +151,7 @@ const Questionary = () => {
       {/*    Elementos: Close, ProgressBar, Lives */}
       <div className="container-2xl w-1/2 h-full">    
         <div className="flex gap-5 items-center ">
-          <button className="" onClick={() => { navigate("/home") }}>✖️</button>
+          <button className="" onClick={() => { navigate("/home"); setLivesToLocalStorage(4); }}>✖️</button>
 
           <div className="w-full bg-gray-200 rounded-full h-3 dark:bg-white">
             <div className="bg-emerald-500 h-3 rounded-full" style={progressBarValue()}></div>
