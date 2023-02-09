@@ -19,7 +19,7 @@ export const router = createBrowserRouter(
                 <Route path="/JS" element={<Questionary />} />
                 <Route path="/FIGMA" element={<Questionary />} />
                 <Route path="/UX" element={<Questionary />} />
-                {/* <Route path="*" element={<Home />} /> */}
+                <Route path="*" element={<Home />} />
 
 		</>
 	)

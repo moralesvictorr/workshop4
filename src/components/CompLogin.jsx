@@ -3,8 +3,12 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const CompLogin = () => {
   const {loginWithRedirect} = useAuth0(); 
-     console.log("hola")
-  return document.addEventListener('DOMContentLoaded', loginWithRedirect() )
+  return(
+    <div>
+      <button onClick={() => loginWithRedirect()}>Login</button>
+    </div>
+    )
+  // ) document.addEventListener('DOMContentLoaded', loginWithRedirect() )
 
 }
 
