@@ -1,9 +1,8 @@
 import React from "react";
-import { Link,useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navbar from "../layout/Navbar";
 
 const Home = () => {
-  const navigate = useNavigate();
   return (
     <div className="bg-slate-800 flex flex-col h-screen w-screen gap-2">
       <h1 className="text-white flex justify-center p-2 mt-7 mb-5 font-anton text-xl ">
