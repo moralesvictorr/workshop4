@@ -161,7 +161,7 @@ const Questionary = () => {
     <div className="bg-slate-800 h-screen p-4 flex justify-center">
 
       {/*    Elementos: Close, ProgressBar, Lives */}
-      <div className="container-2xl w-1/2 h-full">    
+      <div className="container-2xl w-1/2 h-full sm:w-3/4">    
         <div className="flex gap-5 items-center ">
           <button className="" onClick={() => { navigate("/home"); setLivesToLocalStorage(4); }}>✖️</button>
 
