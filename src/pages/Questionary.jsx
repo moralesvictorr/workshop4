@@ -161,11 +161,12 @@ const Questionary = () => {
     <div className="bg-slate-800 h-screen p-4 flex justify-center">
 
       {/*    Elementos: Close, ProgressBar, Lives */}
-      <div className="flex flex-col justify-center container-2xl w-3/4 h-full sm:w-1/2 items-center">    
+      <div className="relative flex flex-col justify-center container-2xl w-3/4 h-full sm:w-1/2 items-center">  
+      <div className="absolute top-0">
         <div className="flex w-full gap-5 items-center ">
           <button className="" onClick={() => { navigate("/home"); setLivesToLocalStorage(4); }}>✖️</button>
 
-          <div className="w-full bg-gray-200 rounded-full h-3 dark:bg-white">
+          <div className="bg-gray-200 rounded-full h-3 dark:bg-white w-28 sm:w-96">
             <div className="bg-emerald-500 h-3 rounded-full" style={progressBarValue()}></div>
           </div>
           <div className="flex w-10">
@@ -173,10 +174,12 @@ const Questionary = () => {
             ❤️
           </div>
         </div>
+        <Timer />
+      </div>  
 
         {/*  FORM  */}
-        <form className="w-full"  >
-          <Timer />
+        <form className="w-full mt-20"  >
+          
         <div className="flex gap-16 items-center justify-center text-center w-full">
           <img className="w-14 hidden sm:block" src="https://cdn.pixabay.com/photo/2020/11/22/04/58/child-5765632_1280.png" alt="animated kid" />
           <h1 className="text-white text-2xl mb-2">{pregunta}</h1>
