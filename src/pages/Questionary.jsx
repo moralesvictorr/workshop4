@@ -178,7 +178,7 @@ const Questionary = () => {
       </div>  
 
         {/*  FORM  */}
-        <form className="w-full mt-20"  >
+        <form className="w-full mt-20 mb-1"  >
           
         <div className="flex gap-16 items-center justify-center text-center w-full">
           <img className="w-14 hidden sm:block" src="https://cdn.pixabay.com/photo/2020/11/22/04/58/child-5765632_1280.png" alt="animated kid" />
